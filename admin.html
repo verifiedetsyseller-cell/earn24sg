@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - EARN24 SG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F8F9FA;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .sidebar {
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            min-height: 100vh;
+        }
+        .stat-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .btn-primary {
+            background-color: #28A745;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background-color: #DC3545;
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #C82333;
+        }
+        .btn-warning {
+            background-color: #FFC107;
+            color: #000;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f1f3f5;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 text-white p-6 fixed h-full">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold">EARN24 SG</h1>
+                <p class="text-sm opacity-75">Admin Dashboard</p>
+            </div>
+            <nav>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#dashboard" onclick="showSection('dashboard')" class="flex items-center p-3 rounded hover:bg-white hover:bg-opacity-10 transition">
+                            <i class="fas fa-tachometer-alt mr-3"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#users" onclick="showSection('users')" class="flex items-center p-3 rounded hover:bg-white hover:bg-opacity-10 transition">
+                            <i class="fas fa-users mr-3"></i> Users
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#opportunities" onclick="showSection('opportunities')" class="flex items-center p-3 rounded hover:bg-white hover:bg-opacity-10 transition">
+                            <i class="fas fa-tasks mr-3"></i> Opportunities
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#withdrawals" onclick="showSection('withdrawals')" class="flex items-center p-3 rounded hover:bg-white hover:bg-opacity-10 transition">
+                            <i class="fas fa-money-bill-wave mr-3"></i> Withdrawals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="logout()" class="flex items-center p-3 rounded hover:bg-red-600 transition">
+                            <i class="fas fa-sign-out-alt mr-3"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="ml-64 flex-1 p-8">
+            <!-- Login Section -->
+            <div id="login-section" class="max-w-md mx-auto mt-20">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Admin Login</h2>
+                    <form id="login-form">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Password</label>
+                            <input type="password" name="password" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold">Login</button>
+                        <div id="login-message" class="mt-4 text-center"></div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div id="admin-content" style="display: none;">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="section-content">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Dashboard Overview</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="stat-card bg-white rounded-lg shadow-lg p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Users</p>
+                                    <h3 class="text-3xl font-bold text-gray-800" id="stat-total-users">0</h3>
+                                </div>
+                                <i class="fas fa-users text-blue-500 text-4xl"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card bg-white rounded-lg shadow-lg p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500 text-sm">Active Users</p>
+                                    <h3 class="text-3xl font-bold text-gray-800" id="stat-active-users">0</h3>
+                                </div>
+                                <i class="fas fa-user-check text-green-500 text-4xl"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card bg-white rounded-lg shadow-lg p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Opportunities</p>
+                                    <h3 class="text-3xl font-bold text-gray-800" id="stat-opportunities">0</h3>
+                                </div>
+                                <i class="fas fa-briefcase text-purple-500 text-4xl"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card bg-white rounded-lg shadow-lg p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500 text-sm">Pending Withdrawals</p>
+                                    <h3 class="text-3xl font-bold text-gray-800" id="stat-withdrawals">0</h3>
+                                </div>
+                                <i class="fas fa-clock text-orange-500 text-4xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-xl font-bold mb-4">Total Earnings Distributed</h3>
+                            <p class="text-4xl font-bold text-green-600">$<span id="stat-total-earnings">0</span></p>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-xl font-bold mb-4">Total Withdrawals</h3>
+                            <p class="text-4xl font-bold text-red-600">$<span id="stat-total-withdrawals">0</span></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Users Section -->
+                <section id="users" class="section-content hidden">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">User Management</h2>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <table class="table-hover w-full">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="p-4 text-left">Username</th>
+                                    <th class="p-4 text-left">Email</th>
+                                    <th class="p-4 text-left">Balance</th>
+                                    <th class="p-4 text-left">Total Earned</th>
+                                    <th class="p-4 text-left">Status</th>
+                                    <th class="p-4 text-left">Registered</th>
+                                    <th class="p-4 text-left">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-table-body">
+                                <tr><td colspan="7" class="p-4 text-center">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Opportunities Section -->
+                <section id="opportunities" class="section-content hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-3xl font-bold text-gray-800">Opportunities Management</h2>
+                        <button onclick="showCreateOpportunityModal()" class="btn-primary px-6 py-3 rounded-lg font-bold">
+                            <i class="fas fa-plus mr-2"></i>Create New
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="opportunities-grid">
+                        <p class="col-span-full text-center p-4">Loading...</p>
+                    </div>
+                </section>
+
+                <!-- Withdrawals Section -->
+                <section id="withdrawals" class="section-content hidden">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Withdrawal Requests</h2>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <table class="table-hover w-full">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="p-4 text-left">User</th>
+                                    <th class="p-4 text-left">Amount</th>
+                                    <th class="p-4 text-left">Method</th>
+                                    <th class="p-4 text-left">Account Details</th>
+                                    <th class="p-4 text-left">Status</th>
+                                    <th class="p-4 text-left">Requested</th>
+                                    <th class="p-4 text-left">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="withdrawals-table-body">
+                                <tr><td colspan="7" class="p-4 text-center">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Create Opportunity Modal -->
+    <div id="create-opportunity-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full">
+            <h3 class="text-2xl font-bold mb-4">Create New Opportunity</h3>
+            <form id="create-opportunity-form">
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Title</label>
+                    <input type="text" name="title" required class="w-full px-4 py-2 border rounded-lg">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Description</label>
+                    <textarea name="description" required class="w-full px-4 py-2 border rounded-lg" rows="3"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Reward ($)</label>
+                    <input type="number" name="reward" step="0.01" min="0" required class="w-full px-4 py-2 border rounded-lg">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Type</label>
+                    <select name="type" required class="w-full px-4 py-2 border rounded-lg">
+                        <option value="Survey">Survey</option>
+                        <option value="Video">Video</option>
+                        <option value="App Test">App Test</option>
+                        <option value="Game">Game</option>
+                        <option value="Cashback">Cashback</option>
+                        <option value="Referral">Referral</option>
+                    </select>
+                </div>
+                <div class="flex gap-4">
+                    <button type="submit" class="flex-1 btn-primary py-2 rounded-lg font-bold">Create</button>
+                    <button type="button" onclick="hideCreateOpportunityModal()" class="flex-1 bg-gray-300 py-2 rounded-lg font-bold">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3001/api';
+        let authToken = localStorage.getItem('adminToken');
+
+        // Login
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = {
+                email: formData.get('email'),
+                password: formData.get('password')
+            };
+
+            try {
+                const response = await fetch(`${API_URL}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                if (response.ok && result.user.isAdmin) {
+                    authToken = result.token;
+                    localStorage.setItem('adminToken', authToken);
+                    document.getElementById('login-section').style.display = 'none';
+                    document.getElementById('admin-content').style.display = 'block';
+                    loadDashboard();
+                } else {
+                    document.getElementById('login-message').innerHTML = '<p class="text-red-600">Admin access required</p>';
+                }
+            } catch (error) {
+                document.getElementById('login-message').innerHTML = '<p class="text-red-600">Login failed</p>';
+            }
+        });
+
+        // Check if already logged in
+        if (authToken) {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('admin-content').style.display = 'block';
+            loadDashboard();
+        }
+
+        function logout() {
+            localStorage.removeItem('adminToken');
+            location.reload();
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+
+            if (sectionId === 'dashboard') loadDashboard();
+            if (sectionId === 'users') loadUsers();
+            if (sectionId === 'opportunities') loadOpportunities();
+            if (sectionId === 'withdrawals') loadWithdrawals();
+        }
+
+        async function loadDashboard() {
+            try {
+                const response = await fetch(`${API_URL}/admin/stats`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const stats = await response.json();
+                document.getElementById('stat-total-users').textContent = stats.totalUsers;
+                document.getElementById('stat-active-users').textContent = stats.activeUsers;
+                document.getElementById('stat-opportunities').textContent = stats.totalOpportunities;
+                document.getElementById('stat-withdrawals').textContent = stats.pendingWithdrawals;
+                document.getElementById('stat-total-earnings').textContent = stats.totalEarnings.toFixed(2);
+                document.getElementById('stat-total-withdrawals').textContent = stats.totalWithdrawals.toFixed(2);
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            }
+        }
+
+        async function loadUsers() {
+            try {
+                const response = await fetch(`${API_URL}/admin/users`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const users = await response.json();
+                const tbody = document.getElementById('users-table-body');
+                tbody.innerHTML = users.map(user => `
+                    <tr>
+                        <td class="p-4">${user.username}</td>
+                        <td class="p-4">${user.email}</td>
+                        <td class="p-4">$${user.balance.toFixed(2)}</td>
+                        <td class="p-4">$${user.totalEarned.toFixed(2)}</td>
+                        <td class="p-4">
+                            <span class="px-3 py-1 rounded ${user.isActive ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}">
+                                ${user.isActive ? 'Active' : 'Inactive'}
+                            </span>
+                        </td>
+                        <td class="p-4">${new Date(user.registrationDate).toLocaleDateString()}</td>
+                        <td class="p-4">
+                            <button onclick="toggleUserStatus('${user._id}')" class="btn-warning px-3 py-1 rounded text-sm">
+                                ${user.isActive ? 'Deactivate' : 'Activate'}
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading users:', error);
+            }
+        }
+
+        async function toggleUserStatus(userId) {
+            try {
+                const response = await fetch(`${API_URL}/admin/users/${userId}/toggle`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                if (response.ok) {
+                    loadUsers();
+                }
+            } catch (error) {
+                console.error('Error toggling user status:', error);
+            }
+        }
+
+        async function loadOpportunities() {
+            try {
+                const response = await fetch(`${API_URL}/opportunities`);
+                const opportunities = await response.json();
+                const grid = document.getElementById('opportunities-grid');
+                grid.innerHTML = opportunities.map(opp => `
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-bold mb-2">${opp.title}</h3>
+                        <p class="text-gray-600 mb-2">${opp.description}</p>
+                        <p class="text-2xl font-bold text-green-600 mb-2">$${opp.reward}</p>
+                        <p class="text-sm text-gray-500 mb-4">Type: ${opp.type}</p>
+                        <p class="text-sm text-gray-500 mb-4">Completions: ${opp.currentCompletions}</p>
+                        <div class="flex gap-2">
+                            <button onclick="deleteOpportunity('${opp._id}')" class="flex-1 btn-danger px-4 py-2 rounded">Delete</button>
+                            <button onclick="toggleOpportunity('${opp._id}', ${!opp.isActive})" class="flex-1 btn-warning px-4 py-2 rounded">
+                                ${opp.isActive ? 'Deactivate' : 'Activate'}
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading opportunities:', error);
+            }
+        }
+
+        function showCreateOpportunityModal() {
+            document.getElementById('create-opportunity-modal').classList.remove('hidden');
+        }
+
+        function hideCreateOpportunityModal() {
+            document.getElementById('create-opportunity-modal').classList.add('hidden');
+        }
+
+        document.getElementById('create-opportunity-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = {
+                title: formData.get('title'),
+                description: formData.get('description'),
+                reward: parseFloat(formData.get('reward')),
+                type: formData.get('type')
+            };
+
+            try {
+                const response = await fetch(`${API_URL}/admin/opportunities`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    hideCreateOpportunityModal();
+                    loadOpportunities();
+                    e.target.reset();
+                }
+            } catch (error) {
+                console.error('Error creating opportunity:', error);
+            }
+        });
+
+        async function deleteOpportunity(id) {
+            if (!confirm('Are you sure you want to delete this opportunity?')) return;
+            try {
+                const response = await fetch(`${API_URL}/admin/opportunities/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                if (response.ok) loadOpportunities();
+            } catch (error) {
+                console.error('Error deleting opportunity:', error);
+            }
+        }
+
+        async function toggleOpportunity(id, isActive) {
+            try {
+                const response = await fetch(`${API_URL}/admin/opportunities/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({ isActive })
+                });
+                if (response.ok) loadOpportunities();
+            } catch (error) {
+                console.error('Error toggling opportunity:', error);
+            }
+        }
+
+        async function loadWithdrawals() {
+            try {
+                const response = await fetch(`${API_URL}/admin/withdrawals`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const withdrawals = await response.json();
+                const tbody = document.getElementById('withdrawals-table-body');
+                tbody.innerHTML = withdrawals.map(w => `
+                    <tr>
+                        <td class="p-4">${w.userId?.username || 'N/A'}</td>
+                        <td class="p-4">$${w.amount.toFixed(2)}</td>
+                        <td class="p-4">${w.method}</td>
+                        <td class="p-4">${w.accountDetails}</td>
+                        <td class="p-4">
+                            <span class="px-3 py-1 rounded ${
+                                w.status === 'pending' ? 'bg-yellow-200 text-yellow-800' :
+                                w.status === 'completed' ? 'bg-green-200 text-green-800' :
+                                'bg-red-200 text-red-800'
+                            }">
+                                ${w.status}
+                            </span>
+                        </td>
+                        <td class="p-4">${new Date(w.requestedAt).toLocaleDateString()}</td>
+                        <td class="p-4">
+                            ${w.status === 'pending' ? `
+                                <button onclick="processWithdrawal('${w._id}', 'completed')" class="btn-primary px-3 py-1 rounded text-sm mr-2">Approve</button>
+                                <button onclick="processWithdrawal('${w._id}', 'rejected')" class="btn-danger px-3 py-1 rounded text-sm">Reject</button>
+                            ` : '-'}
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading withdrawals:', error);
+            }
+        }
+
+        async function processWithdrawal(id, status) {
+            try {
+                const response = await fetch(`${API_URL}/admin/withdrawals/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({ status })
+                });
+                if (response.ok) {
+                    loadWithdrawals();
+                    loadDashboard();
+                }
+            } catch (error) {
+                console.error('Error processing withdrawal:', error);
+            }
+        }
+    </script>
+</body>
+</html>

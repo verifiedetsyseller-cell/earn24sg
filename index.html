@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EARN24 SG - Start Earning Today</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F8F9FA; /* Light Gray background */
+            color: #343A40; /* Dark Gray text */
+        }
+        .text-primary-accent {
+            color: #28A745; /* Success Green */
+        }
+        .bg-primary-dark {
+            background-color: #003366; /* Deep Corporate Blue */
+        }
+        .btn-primary-accent {
+            background-color: #28A745; /* Success Green */
+            color: #FFFFFF;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        .btn-primary-accent:hover {
+            background-color: #218838;
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+            transform: translateY(-3px);
+        }
+        .header-bg {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease;
+            border-bottom: 1px solid #DEE2E6;
+        }
+        .header-bg.scrolled {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .section-divider {
+            background: linear-gradient(to right, transparent 0%, #28A745 50%, transparent 100%);
+            height: 2px;
+            opacity: 0.5;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        .border-primary-accent {
+            border-color: #28A745;
+        }
+        .input-field {
+            background-color: #FFFFFF;
+            border: 1px solid #CED4DA;
+            border-radius: 4px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #28A745;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+        }
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header -->
+    <header id="main-header" class="header-bg py-4 fixed w-full z-20">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="text-4xl font-black text-primary-accent uppercase tracking-wider">EARN24 SG</h1>
+            <nav>
+                <ul class="flex space-x-8">
+                    <li><a href="#how-it-works" class="text-lg text-gray-700 hover:text-primary-accent transition-colors duration-300">How It Works</a></li>
+                    <li><a href="#opportunities" class="text-lg text-gray-700 hover:text-primary-accent transition-colors duration-300">Opportunities</a></li>
+                    <li><a href="#testimonials" class="text-lg text-gray-700 hover:text-primary-accent transition-colors duration-300">Testimonials</a></li>
+                    <li><a href="#register" class="text-lg text-gray-700 hover:text-primary-accent transition-colors duration-300">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center overflow-hidden bg-white">
+        <div class="absolute inset-0 bg-dots-pattern opacity-10"></div>
+        <div class="z-10 p-8" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="text-7xl text-gray-800 mb-4 leading-tight">
+                Unlock Your Earning Potential.<br>Start Earning Online in Singapore.
+            </h2>
+            <p class="text-2xl text-gray-500 mb-8 max-w-3xl mx-auto font-light">
+                Join thousands of Singaporeans making money online through simple tasks, surveys, and exclusive offers.
+            </p>
+            <a href="#register" class="btn-primary-accent font-bold py-4 px-12 text-xl uppercase tracking-wider">
+                Create Free Account
+            </a>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-24 px-6 container mx-auto">
+        <div class="w-24 h-1 section-divider mx-auto mb-16 rounded-full" data-aos="fade-up"></div>
+        <h3 class="text-6xl text-center text-gray-800 mb-16" data-aos="fade-up">How It Works</h3>
+        <div class="grid md:grid-cols-3 gap-12 items-start text-center">
+            
+            <div class="p-8" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-primary-accent text-white rounded-full h-24 w-24 flex items-center justify-center mx-auto mb-6">
+                    <span class="text-5xl font-bold">1</span>
+                </div>
+                <h4 class="text-3xl text-gray-800 mb-4">Register Free</h4>
+                <p class="text-lg text-gray-600">Create your secure account in under 60 seconds. It's completely free and always will be.</p>
+            </div>
+            
+            <div class="p-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-primary-accent text-white rounded-full h-24 w-24 flex items-center justify-center mx-auto mb-6">
+                    <span class="text-5xl font-bold">2</span>
+                </div>
+                <h4 class="text-3xl text-gray-800 mb-4">Complete Tasks</h4>
+                <p class="text-lg text-gray-600">Choose from a wide variety of earning opportunities, from filling out surveys to testing new apps.</p>
+            </div>
+            
+            <div class="p-8" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-primary-accent text-white rounded-full h-24 w-24 flex items-center justify-center mx-auto mb-6">
+                    <span class="text-5xl font-bold">3</span>
+                </div>
+                <h4 class="text-3xl text-gray-800 mb-4">Get Paid</h4>
+                <p class="text-lg text-gray-600">Easily withdraw your earnings via PayPal, bank transfer, or popular gift cards. Fast and secure payments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Earning Opportunities Section -->
+    <section id="opportunities" class="py-24 px-6 bg-white">
+        <div class="container mx-auto">
+            <div class="w-24 h-1 section-divider mx-auto mb-16 rounded-full" data-aos="fade-up"></div>
+            <h3 class="text-6xl text-center text-gray-800 mb-16" data-aos="fade-up">Earning Opportunities</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="text-2xl text-primary-accent mb-3">Paid Surveys</h4>
+                    <p>Share your opinion with leading brands and get paid for your valuable insights.</p>
+                </div>
+                <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="text-2xl text-primary-accent mb-3">Watch Videos</h4>
+                    <p>Earn cash by watching short, engaging video ads from our partners.</p>
+                </div>
+                <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="text-2xl text-primary-accent mb-3">Test Apps</h4>
+                    <p>Get paid to download and test the latest mobile apps and games.</p>
+                </div>
+                 <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="text-2xl text-primary-accent mb-3">Play Games</h4>
+                    <p>Reach new levels and complete in-game tasks to earn real rewards.</p>
+                </div>
+                <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="text-2xl text-primary-accent mb-3">Cashback Offers</h4>
+                    <p>Get money back when you shop at your favorite online stores through our portal.</p>
+                </div>
+                <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="text-2xl text-primary-accent mb-3">Refer Friends</h4>
+                    <p>Invite your friends to EARN24 SG and earn a commission on their earnings for life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 px-6">
+        <div class="container mx-auto text-center">
+            <div class="w-24 h-1 section-divider mx-auto mb-16 rounded-full" data-aos="fade-up"></div>
+            <h3 class="text-6xl text-gray-800 mb-16" data-aos="fade-up">What Our Members Say</h3>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <p class="text-gray-600 italic mb-4">"I was skeptical at first, but EARN24 SG is legit! I made my first S$50 in a week just by doing surveys in my free time. Highly recommended!"</p>
+                    <p class="font-bold text-gray-800">- Sarah T.</p>
+                    <p class="text-sm text-gray-500">Clementi, Singapore</p>
+                </div>
+                 <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <p class="text-gray-600 italic mb-4">"The best part is the variety of tasks. I can choose what I want to do, and the payments are always on time. It's a great side hustle."</p>
+                    <p class="font-bold text-gray-800">- David L.</p>
+                    <p class="text-sm text-gray-500">Tampines, Singapore</p>
+                </div>
+                 <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <p class="text-gray-600 italic mb-4">"Finally, a reliable earning site for Singapore. The interface is clean and easy to use. I cashed out via PayPal without any issues."</p>
+                    <p class="font-bold text-gray-800">- Priya K.</p>
+                    <p class="text-sm text-gray-500">Jurong West, Singapore</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register" class="py-24 px-6 bg-white">
+        <div class="container mx-auto text-center">
+            <div class="w-24 h-1 section-divider mx-auto mb-16 rounded-full" data-aos="fade-up"></div>
+            <h3 class="text-6xl text-gray-800 mb-12" data-aos="fade-up">Register Your Free Account</h3>
+            <p class="text-xl text-gray-500 mb-8 max-w-2xl mx-auto font-light" data-aos="fade-up">
+                Start your earning journey today. Join the EARN24 SG community now!
+            </p>
+            <form class="max-w-xl mx-auto text-left" data-aos="fade-up" id="registration-form">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <input type="text" name="username" placeholder="Username" class="input-field p-4" required>
+                    <input type="email" name="email" placeholder="Email Address" class="input-field p-4" required>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <input type="password" name="password" placeholder="Password" class="input-field p-4" required>
+                    <input type="password" name="confirmPassword" placeholder="Confirm Password" class="input-field p-4" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn-primary-accent font-bold py-4 px-12 text-xl uppercase tracking-wider">
+                        Create Account
+                    </button>
+                </div>
+                <div id="message" class="mt-4 text-center"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-gray-600 py-10 border-t bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-4">&copy; 2025 EARN24 SG. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-700 hover:text-primary-accent transition-colors duration-300">About Us</a>
+                <a href="#" class="text-gray-700 hover:text-primary-accent transition-colors duration-300">FAQ</a>
+                <a href="#" class="text-gray-700 hover:text-primary-accent transition-colors duration-300">Privacy Policy</a>
+                <a href="#" class="text-gray-700 hover:text-primary-accent transition-colors duration-300">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 50,
+        });
+
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('registration-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+                username: formData.get('username'),
+                email: formData.get('email'),
+                password: formData.get('password'),
+                confirmPassword: formData.get('confirmPassword')
+            };
+
+            const messageDiv = document.getElementById('message');
+
+            // Check if passwords match
+            if (data.password !== data.confirmPassword) {
+                messageDiv.innerHTML = '<p class="text-red-600">Passwords do not match!</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3001/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: data.username,
+                        email: data.email,
+                        password: data.password
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    messageDiv.innerHTML = '<p class="text-green-600 font-bold">' + result.message + '</p>';
+                    e.target.reset();
+                } else {
+                    messageDiv.innerHTML = '<p class="text-red-600">' + result.message + '</p>';
+                }
+            } catch (error) {
+                messageDiv.innerHTML = '<p class="text-red-600">Error connecting to server. Please try again later.</p>';
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
