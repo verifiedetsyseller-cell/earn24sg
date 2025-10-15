@@ -15,6 +15,7 @@ const cookieParser = require('cookie-parser');
 
 // --- 2. Initialize Express App ---
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3001;
 
 // --- 3. Security Middleware ---
