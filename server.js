@@ -48,7 +48,7 @@ app.use(mongoSanitize());
 
 // --- 4. Database Connection ---
 const dbURI = process.env.MONGODB_URI;
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://earn24sg:pass@earn24sg.3leh6kg.mongodb.net/?retryWrites=true&w=majority&appName=earn24sg")
     .then(() => console.log('✅ Successfully connected to MongoDB database.'))
     .catch(err => console.error('❌ Database connection error:', err));
 
