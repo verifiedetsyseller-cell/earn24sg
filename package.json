@@ -10,13 +10,32 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^1.6.0",
+=======
+    "axios": "^1.4.0",
+>>>>>>> a7df8022d3beab94bb33cb86edf5d5dbf4e0ea71
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+<<<<<<< HEAD
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.0",
     "nanoid": "^3.3.7"
+=======
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.7.0",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.0",
+    "uuid": "^9.0.0",
+    "xss-clean": "^0.1.4"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^10.2.3",
+    "nodemon": "^2.0.22"
+>>>>>>> a7df8022d3beab94bb33cb86edf5d5dbf4e0ea71
   }
 }
 ```

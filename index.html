@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EARN24 SG - A Refined Rewards Experience</title>
@@ -641,6 +642,106 @@
             setTimeout(() => modal.classList.add('pointer-events-none'), 300);
         }
     </script>
+=======
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EARN24 SG - Start Earning Online</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+    }
+    header {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .btn {
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+    .btn-primary {
+      background: #22c55e;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #16a34a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="py-4 fixed w-full top-0 left-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-green-600">EARN24 SG</h1>
+      <nav class="space-x-4">
+        <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        <a href="admin.html" class="btn bg-gray-800 text-white hover:bg-gray-700">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 text-center bg-gradient-to-b from-green-50 to-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-4xl font-extrabold mb-4">Start Earning Online Today</h2>
+      <p class="text-gray-600 mb-6 text-lg">
+        Join thousands of users earning real rewards in USDT. Complete tasks, refer friends, and withdraw anytime.
+      </p>
+      <a href="signup.html" class="btn btn-primary text-lg font-semibold">Create Free Account</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-16 max-w-6xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
+    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg">
+      <h3 class="text-2xl font-bold text-green-600 mb-2">💰 Complete Tasks</h3>
+      <p>Earn instant rewards for completing surveys, testing apps, or watching ads.</p>
+    </div>
+    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg">
+      <h3 class="text-2xl font-bold text-green-600 mb-2">👥 Referral Program</h3>
+      <p>Invite friends and earn bonus points for every referral that joins and stays active.</p>
+    </div>
+    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg">
+      <h3 class="text-2xl font-bold text-green-600 mb-2">🌍 Multi-Currency</h3>
+      <p>All earnings are stored in USDT but viewable in your local currency automatically.</p>
+    </div>
+  </section>
+
+  <!-- API Health Check -->
+  <section class="py-10 text-center border-t bg-gray-50">
+    <div class="max-w-3xl mx-auto">
+      <h3 class="text-2xl font-bold mb-3">Backend Status</h3>
+      <p id="api-status" class="text-gray-600">Checking API connection...</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-white border-t text-center text-gray-500 text-sm">
+    <p>© 2025 EARN24 SG. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Backend Check Script -->
+  <script>
+    async function checkAPI() {
+      try {
+        const res = await fetch("https://earn24sg.onrender.com/");
+        if (res.ok) {
+          document.getElementById("api-status").innerHTML = "✅ Backend is connected and running!";
+        } else {
+          document.getElementById("api-status").innerHTML = "⚠️ Could not connect to backend.";
+        }
+      } catch (err) {
+        document.getElementById("api-status").innerHTML = "❌ Server unreachable. Please check backend.";
+      }
+    }
+    checkAPI();
+  </script>
+
+>>>>>>> a7df8022d3beab94bb33cb86edf5d5dbf4e0ea71
 </body>
 </html>
 
