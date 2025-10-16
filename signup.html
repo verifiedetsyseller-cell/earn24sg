@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - EARN24 SG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- BLACK & GREEN "MATRIX" THEME --- */
+        :root {
+            --bg-color: #0D1117;
+            --card-bg-color: #161B22;
+            --text-color: #E6EDF3;
+            --text-muted-color: #8B949E;
+            --input-bg-color: #0D1117;
+            --input-border-color: #30363D;
+            --accent-color-primary: #2ECC71;
+            --message-success-bg: #E6F4EA;
+            --message-success-text: #1E4620;
+            --message-error-bg: #FDEDED;
+            --message-error-text: #5A2121;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-color);
+        }
+        .text-accent { color: var(--accent-color-primary); }
+        
+        .btn-primary {
+            background-color: var(--accent-color-primary);
+            color: #FFFFFF;
+            border: 1px solid var(--accent-color-primary);
+            transition: all 0.3s ease;
+            padding: 0.75rem 2rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-radius: 6px;
+        }
+        .btn-primary:hover {
+            background-color: #27ae60;
+        }
+        
+        .input-field {
+            background-color: var(--input-bg-color);
+            border: 1px solid var(--input-border-color);
+            border-radius: 6px;
+            color: var(--text-color);
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent-color-primary);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        }
+        
+        .message-box { display: none; }
+        .message-box.success { background-color: var(--message-success-bg); color: var(--message-success-text); display: block; }
+        .message-box.error { background-color: var(--message-error-bg); color: var(--message-error-text); display: block; }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <header class="py-4 fixed w-full z-20" style="background-color: var(--header-bg-color, rgba(13, 17, 23, 0.8)); backdrop-filter: blur(12px); border-bottom: 1px solid var(--input-border-color, #30363D);">
+        <div class="container mx-auto flex justify-between items-center px-4 sm:px-6">
+            <a href="index.html" class="text-2xl sm:text-3xl font-bold text-color">EARN24 <span class="text-accent">SG</span></a>
+            <a href="index.html" id="login-link" class="text-lg text-muted hover:text-accent">Login</a>
+        </div>
+    </header>
+
+    <main class="flex items-center justify-center min-h-screen pt-24 pb-12">
+        <section id="register" class="w-full">
+            <div class="container mx-auto text-center px-4 sm:px-6">
+                <h3 class="text-4xl md:text-5xl mb-6">Join Our Community</h3>
+                <p class="text-lg md:text-xl text-muted mb-12 max-w-2xl mx-auto">Create your account to access exclusive engagements and start earning rewards.</p>
+                
+                <div id="success-container" class="hidden max-w-xl mx-auto text-center p-8 rounded-lg" style="background-color: var(--card-bg-color);">
+                     <h4 class="text-3xl text-accent mb-4">Registration Successful!</h4>
+                     <p class="text-muted text-lg mb-8">Welcome to EARN24 SG. You can now log in to access your dashboard.</p>
+                     <a href="index.html" class="btn-primary">Return to Home</a>
+                </div>
+
+                <form id="registration-form" class="max-w-xl mx-auto text-left">
+                    <div id="register-message-box" class="message-box p-4 mb-4 rounded-lg text-center font-semibold"></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                        <input type="text" name="username" placeholder="Username" class="input-field w-full p-3" required>
+                        <input type="email" name="email" placeholder="Email Address" class="input-field w-full p-3" required>
+                    </div>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                        <input type="password" name="password" id="password" placeholder="Password" class="input-field w-full p-3" required>
+                        <input type="password" name="confirmPassword" placeholder="Confirm Password" class="input-field w-full p-3" required>
+                    </div>
+                    <div class="text-xs text-muted mb-6 -mt-4 px-1">
+                        Password must be 8+ characters and include uppercase, lowercase, a number, and a special character (@$!%*?&).
+                    </div>
+                    <div class="mb-6">
+                        <input type="text" name="referrerCode" placeholder="Referral Code (Optional)" class="input-field w-full p-3">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const backendUrl = 'https://earn24sg.onrender.com';
+        const registrationForm = document.getElementById('registration-form');
+        const successContainer = document.getElementById('success-container');
+        
+        document.getElementById('login-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.setItem('openLoginModal', 'true');
+            window.location.href = 'index.html';
+        });
+
+        registrationForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(e.target).entries());
+            
+            // Password validation
+            const password = data.password;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (!passwordRegex.test(password)) {
+                return showMessage('register-message-box', 'Password does not meet requirements.', 'error');
+            }
+
+            if (password !== data.confirmPassword) {
+                return showMessage('register-message-box', 'Passwords do not match.', 'error');
+            }
+
+            try {
+                await apiCall('/api/auth/register', 'POST', data);
+                // On success, hide form and show success message
+                registrationForm.style.display = 'none';
+                document.querySelector('#register h3').style.display = 'none';
+                document.querySelector('#register p').style.display = 'none';
+                successContainer.style.display = 'block';
+
+            } catch (error) {
+                showMessage('register-message-box', error.message, 'error');
+            }
+        });
+
+        async function apiCall(endpoint, method, body) {
+            const options = { method, headers: { 'Content-Type': 'application/json' }};
+            if (body) options.body = JSON.stringify(body);
+            const response = await fetch(backendUrl + endpoint, options);
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.message || 'An API error occurred.');
+            return data;
+        }
+
+        function showMessage(boxId, message, type) {
+            const box = document.getElementById(boxId);
+            box.textContent = message;
+            box.className = 'message-box p-4 mb-4 rounded-lg text-center font-semibold';
+            box.classList.add(type);
+        }
+    </script>
+
+</body>
+</html>
+

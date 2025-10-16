@@ -3,301 +3,645 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EARN24 SG - Start Earning Today</title>
+    <title>EARN24 SG - A Refined Rewards Experience</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        /* --- BLACK & GREEN "MATRIX" THEME --- */
+        :root {
+            /* Light Theme */
+            --bg-color: #FFFFFF;
+            --card-bg-color: #F6F8FA;
+            --text-color: #1a1a1a;
+            --text-muted-color: #57606a;
+            --input-bg-color: #FFFFFF;
+            --input-border-color: #DDE2E7;
+            --header-bg-color: rgba(255, 255, 255, 0.85);
+            --accent-color-primary: #238636; /* GitHub Green */
+            --accent-color-secondary: #238636;
+            --btn-secondary-bg: #F1F3F5;
+            --btn-secondary-text: #1a1a1a;
+            --btn-secondary-hover-bg: #E9ECEF;
+            --message-success-bg: #E6F4EA;
+            --message-success-text: #1E4620;
+            --message-error-bg: #FDEDED;
+            --message-error-text: #5A2121;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme (Default) */
+            --bg-color: #0D1117; /* GitHub Dark Background */
+            --card-bg-color: #161B22;
+            --text-color: #E6EDF3;
+            --text-muted-color: #8B949E;
+            --input-bg-color: #0D1117;
+            --input-border-color: #30363D;
+            --header-bg-color: rgba(13, 17, 23, 0.8);
+            --accent-color-primary: #2ECC71; /* Vibrant Green */
+            --accent-color-secondary: #2ECC71;
+            --btn-secondary-bg: #21262D;
+            --btn-secondary-text: #E6EDF3;
+            --btn-secondary-hover-bg: #30363D;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #F8F9FA; /* Light Gray background */
-            color: #343A40; /* Dark Gray text */
-        }
-        .text-primary-accent {
-            color: #28A745; /* Success Green */
-        }
-        .bg-primary-dark {
-            background-color: #003366; /* Deep Corporate Blue */
-        }
-        .btn-primary-accent {
-            background-color: #28A745; /* Success Green */
-            color: #FFFFFF;
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-        .btn-primary-accent:hover {
-            background-color: #218838;
-            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
-            transform: translateY(-3px);
-        }
-        .header-bg {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            transition: background-color 0.3s ease;
-            border-bottom: 1px solid #DEE2E6;
-        }
-        .header-bg.scrolled {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-        .section-divider {
-            background: linear-gradient(to right, transparent 0%, #28A745 50%, transparent 100%);
-            height: 2px;
-            opacity: 0.5;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Playfair Display', serif;
+            color: var(--text-color);
+        }
+        .text-accent { color: var(--accent-color-secondary); }
+        .border-accent { border-color: var(--accent-color-secondary); }
+
+        .btn-primary {
+            background-color: var(--accent-color-secondary);
+            color: #FFFFFF;
+            border: 1px solid var(--accent-color-secondary);
+            transition: all 0.3s ease;
+            padding: 0.75rem 2rem;
             font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.2);
         }
-        .border-primary-accent {
-            border-color: #28A745;
+        .btn-primary:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
         }
+         .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color-secondary);
+            border: 1px solid var(--accent-color-secondary);
+            transition: all 0.3s ease;
+            padding: 0.75rem 2rem;
+            font-weight: 700;
+            border-radius: 6px;
+        }
+         .btn-secondary:hover {
+             background-color: var(--accent-color-secondary);
+             color: #FFFFFF;
+        }
+
+        .header-bg {
+            background: var(--header-bg-color);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--input-border-color);
+        }
+        .section-divider {
+            height: 2px;
+            width: 80px;
+            background: var(--accent-color-secondary);
+            border-radius: 99px;
+        }
+        
         .input-field {
-            background-color: #FFFFFF;
-            border: 1px solid #CED4DA;
-            border-radius: 4px;
+            background-color: var(--input-bg-color);
+            border: 1px solid var(--input-border-color);
+            border-radius: 6px;
+            color: var(--text-color);
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .input-field:focus {
             outline: none;
-            border-color: #28A745;
-            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+            border-color: var(--accent-color-secondary);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
         }
-        .feature-card {
+        
+        .themed-card {
+            background-color: var(--card-bg-color);
+            color: var(--text-color);
+            border-radius: 12px;
+            border: 1px solid var(--input-border-color);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .feature-card:hover {
+        .themed-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
         }
+        
+        .themed-section { 
+            background-color: var(--card-bg-color);
+        }
+        .text-muted { color: var(--text-muted-color); }
+        .code-block {
+            background-color: var(--bg-color);
+            border: 1px solid var(--input-border-color);
+            color: var(--accent-color-secondary);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-family: monospace;
+        }
+        
+        /* Message & Modal styles */
+        .message-box { display: none; }
+        .message-box.success { background-color: var(--message-success-bg); color: var(--message-success-text); display: block; }
+        .message-box.error { background-color: var(--message-error-bg); color: var(--message-error-text); display: block; }
+        .modal-content { background-color: var(--bg-color); color: var(--text-color); }
+        
+        /* Testimonial Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-10px); }
+        }
+        .testimonial-item {
+            animation-duration: 0.5s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+        }
+        .fade-in { animation-name: fadeIn; }
+        .fade-out { animation-name: fadeOut; }
     </style>
 </head>
-<body class="min-h-screen">
+<body data-theme="dark">
 
-    <!-- Header -->
-    <header id="main-header" class="header-bg py-4 fixed w-full z-20">
-        <div class="container mx-auto flex justify-between items-center px-6">
-            <h1 class="text-4xl font-black text-primary-accent uppercase tracking-wider">EARN24 SG</h1>
-            <nav>
-                <ul class="flex space-x-8">
-                    <li><a href="#how-it-works" class="text-lg text-gray-700 hover:text-primary-accent transition-colors duration-300">How It Works</a></li>
-                    <li><a href="#opportunities" class="text-lg text-gray-700 hover:text-primary-accent transition-colors duration-300">Opportunities</a></li>
-                    <li><a href="#testimonials" class="text-lg text-gray-700 hover:text-primary-accent transition-colors duration-300">Testimonials</a></li>
-                    <li><a href="#register" class="text-lg text-gray-700 hover:text-primary-accent transition-colors duration-300">Register</a></li>
+    <header class="header-bg py-4 fixed w-full z-20">
+        <div class="container mx-auto flex justify-between items-center px-4 sm:px-6">
+            <a href="index.html" class="text-2xl sm:text-3xl font-bold text-color">EARN24 <span class="text-accent">SG</span></a>
+            <nav class="hidden md:block">
+                <ul id="nav-links-desktop" class="flex space-x-8 items-center">
+                    <li class="logged-out-view"><a href="#how-it-works" class="text-lg text-muted hover:text-accent">Process</a></li>
+                    <li class="logged-out-view"><a href="#avenues" class="text-lg text-muted hover:text-accent">Avenues</a></li>
+                    <li class="logged-out-view"><a href="#testimonials" class="text-lg text-muted hover:text-accent">Testimonials</a></li>
+                    <li class="logged-out-view"><a href="signup.html" class="text-lg text-muted hover:text-accent">Join</a></li>
+                    <li class="logged-out-view"><button id="login-button" class="btn-primary text-sm">Login</button></li>
+                    <li class="logged-in-view hidden"><span class="text-lg text-muted">Welcome, <span id="nav-username-desktop" class="font-bold text-color"></span></span></li>
+                    <li class="logged-in-view hidden"><button id="dashboard-button-desktop" class="text-lg text-accent font-bold">Dashboard</button></li>
+                    <li class="logged-in-view hidden"><button id="logout-button-desktop" class="btn-secondary text-sm">Logout</button></li>
                 </ul>
             </nav>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-color focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <ul id="nav-links-mobile" class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <li class="logged-out-view"><a href="#how-it-works" class="block px-3 py-2 rounded-md text-base font-medium text-muted hover:text-accent">Process</a></li>
+                <li class="logged-out-view"><a href="#avenues" class="block px-3 py-2 rounded-md text-base font-medium text-muted hover:text-accent">Avenues</a></li>
+                <li class="logged-out-view"><a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-muted hover:text-accent">Testimonials</a></li>
+                <li class="logged-out-view"><a href="signup.html" class="block px-3 py-2 rounded-md text-base font-medium text-muted hover:text-accent">Join</a></li>
+                <li class="logged-out-view"><button id="login-button-mobile" class="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-accent">Login</button></li>
+                <li class="logged-in-view hidden"><span class="block px-3 py-2 text-base font-medium text-muted">Welcome, <span id="nav-username-mobile" class="font-bold text-color"></span></span></li>
+                <li class="logged-in-view hidden"><button id="dashboard-button-mobile" class="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-accent">Dashboard</button></li>
+                <li class="logged-in-view hidden"><button id="logout-button-mobile" class="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-accent">Logout</button></li>
+            </ul>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center text-center overflow-hidden bg-white">
-        <div class="absolute inset-0 bg-dots-pattern opacity-10"></div>
-        <div class="z-10 p-8" data-aos="fade-up" data-aos-duration="1000">
-            <h2 class="text-7xl text-gray-800 mb-4 leading-tight">
-                Unlock Your Earning Potential.<br>Start Earning Online in Singapore.
-            </h2>
-            <p class="text-2xl text-gray-500 mb-8 max-w-3xl mx-auto font-light">
-                Join thousands of Singaporeans making money online through simple tasks, surveys, and exclusive offers.
-            </p>
-            <a href="#register" class="btn-primary-accent font-bold py-4 px-12 text-xl uppercase tracking-wider">
-                Create Free Account
-            </a>
+    <main id="main-content">
+    <section id="hero" class="relative h-screen flex items-center justify-center md:justify-start text-center md:text-left">
+        <div class="container mx-auto px-4 sm:px-6 z-10" data-aos="fade-up">
+            <h2 class="text-4xl sm:text-5xl md:text-7xl mb-4 leading-tight max-w-2xl">A Refined Rewards Experience.</h2>
+            <p class="text-lg sm:text-xl md:text-2xl mb-10 max-w-xl text-muted">A premium platform for turning your insights into tangible assets and exclusive rewards.</p>
+            <a href="signup.html" class="btn-primary">Become a Member</a>
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="py-24 px-6 container mx-auto">
-        <div class="w-24 h-1 section-divider mx-auto mb-16 rounded-full" data-aos="fade-up"></div>
-        <h3 class="text-6xl text-center text-gray-800 mb-16" data-aos="fade-up">How It Works</h3>
-        <div class="grid md:grid-cols-3 gap-12 items-start text-center">
-            
-            <div class="p-8" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-primary-accent text-white rounded-full h-24 w-24 flex items-center justify-center mx-auto mb-6">
-                    <span class="text-5xl font-bold">1</span>
-                </div>
-                <h4 class="text-3xl text-gray-800 mb-4">Register Free</h4>
-                <p class="text-lg text-gray-600">Create your secure account in under 60 seconds. It's completely free and always will be.</p>
+    <section id="how-it-works" class="py-16 md:py-24 px-4 sm:px-6 container mx-auto text-center">
+        <div class="section-divider mx-auto mb-8" data-aos="fade-up"></div>
+        <h3 class="text-4xl md:text-5xl mb-16" data-aos="fade-up">Our Process</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto">
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h4 class="text-3xl text-accent mb-4">1. Join</h4>
+                <p class="text-muted leading-relaxed">Create your complimentary account to join our exclusive community of members.</p>
             </div>
-            
-            <div class="p-8" data-aos="fade-up" data-aos-delay="200">
-                <div class="bg-primary-accent text-white rounded-full h-24 w-24 flex items-center justify-center mx-auto mb-6">
-                    <span class="text-5xl font-bold">2</span>
-                </div>
-                <h4 class="text-3xl text-gray-800 mb-4">Complete Tasks</h4>
-                <p class="text-lg text-gray-600">Choose from a wide variety of earning opportunities, from filling out surveys to testing new apps.</p>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h4 class="text-3xl text-accent mb-4">2. Engage</h4>
+                <p class="text-muted leading-relaxed">Participate in premium engagements from leading brands, including surveys and studies.</p>
             </div>
-            
-            <div class="p-8" data-aos="fade-up" data-aos-delay="300">
-                <div class="bg-primary-accent text-white rounded-full h-24 w-24 flex items-center justify-center mx-auto mb-6">
-                    <span class="text-5xl font-bold">3</span>
-                </div>
-                <h4 class="text-3xl text-gray-800 mb-4">Get Paid</h4>
-                <p class="text-lg text-gray-600">Easily withdraw your earnings via PayPal, bank transfer, or popular gift cards. Fast and secure payments.</p>
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h4 class="text-3xl text-accent mb-4">3. Redeem</h4>
+                <p class="text-muted leading-relaxed">Convert your earned points into real-world value through our secure and transparent system.</p>
             </div>
         </div>
     </section>
-
-    <!-- Earning Opportunities Section -->
-    <section id="opportunities" class="py-24 px-6 bg-white">
+    
+    <section id="avenues" class="py-16 md:py-24 px-4 sm:px-6 themed-section">
         <div class="container mx-auto">
-            <div class="w-24 h-1 section-divider mx-auto mb-16 rounded-full" data-aos="fade-up"></div>
-            <h3 class="text-6xl text-center text-gray-800 mb-16" data-aos="fade-up">Earning Opportunities</h3>
+            <div class="section-divider mx-auto mb-8" data-aos="fade-up"></div>
+            <h3 class="text-4xl md:text-5xl text-center mb-16" data-aos="fade-up">Earning Avenues</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="100">
-                    <h4 class="text-2xl text-primary-accent mb-3">Paid Surveys</h4>
-                    <p>Share your opinion with leading brands and get paid for your valuable insights.</p>
+                <div class="themed-card p-8 flex items-start space-x-4" data-aos="fade-up">
+                    <div class="flex-shrink-0"><svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg></div>
+                    <div>
+                        <h4 class="text-2xl mb-2">Paid Surveys</h4>
+                        <p class="text-muted">Share your valuable opinions with leading brands and get rewarded.</p>
+                    </div>
                 </div>
-                <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="text-2xl text-primary-accent mb-3">Watch Videos</h4>
-                    <p>Earn cash by watching short, engaging video ads from our partners.</p>
+                <div class="themed-card p-8 flex items-start space-x-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex-shrink-0"><svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></div>
+                    <div>
+                        <h4 class="text-2xl mb-2">Watch Videos</h4>
+                        <p class="text-muted">Earn rewards for watching short, engaging video content from partners.</p>
+                    </div>
                 </div>
-                <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="300">
-                    <h4 class="text-2xl text-primary-accent mb-3">Test Apps</h4>
-                    <p>Get paid to download and test the latest mobile apps and games.</p>
+                <div class="themed-card p-8 flex items-start space-x-4" data-aos="fade-up" data-aos-delay="200">
+                     <div class="flex-shrink-0"><svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></div>
+                    <div>
+                        <h4 class="text-2xl mb-2">Test Apps</h4>
+                        <p class="text-muted">Get paid to download and test the latest mobile apps and provide feedback.</p>
+                    </div>
                 </div>
-                 <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="100">
-                    <h4 class="text-2xl text-primary-accent mb-3">Play Games</h4>
-                    <p>Reach new levels and complete in-game tasks to earn real rewards.</p>
+                <div class="themed-card p-8 flex items-start space-x-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex-shrink-0"><svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div>
+                    <div>
+                        <h4 class="text-2xl mb-2">Play Games</h4>
+                        <p class="text-muted">Achieve new levels and milestones in mobile games to earn rewards.</p>
+                    </div>
                 </div>
-                <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="text-2xl text-primary-accent mb-3">Cashback Offers</h4>
-                    <p>Get money back when you shop at your favorite online stores through our portal.</p>
+                <div class="themed-card p-8 flex items-start space-x-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex-shrink-0"><svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg></div>
+                    <div>
+                        <h4 class="text-2xl mb-2">Cashback Offers</h4>
+                        <p class="text-muted">Receive cash back on purchases when you shop through our partner network.</p>
+                    </div>
                 </div>
-                <div class="feature-card bg-white rounded-lg shadow-md p-8 text-center" data-aos="fade-up" data-aos-delay="300">
-                    <h4 class="text-2xl text-primary-accent mb-3">Refer Friends</h4>
-                    <p>Invite your friends to EARN24 SG and earn a commission on their earnings for life.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-24 px-6">
-        <div class="container mx-auto text-center">
-            <div class="w-24 h-1 section-divider mx-auto mb-16 rounded-full" data-aos="fade-up"></div>
-            <h3 class="text-6xl text-gray-800 mb-16" data-aos="fade-up">What Our Members Say</h3>
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                    <p class="text-gray-600 italic mb-4">"I was skeptical at first, but EARN24 SG is legit! I made my first S$50 in a week just by doing surveys in my free time. Highly recommended!"</p>
-                    <p class="font-bold text-gray-800">- Sarah T.</p>
-                    <p class="text-sm text-gray-500">Clementi, Singapore</p>
-                </div>
-                 <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                    <p class="text-gray-600 italic mb-4">"The best part is the variety of tasks. I can choose what I want to do, and the payments are always on time. It's a great side hustle."</p>
-                    <p class="font-bold text-gray-800">- David L.</p>
-                    <p class="text-sm text-gray-500">Tampines, Singapore</p>
-                </div>
-                 <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                    <p class="text-gray-600 italic mb-4">"Finally, a reliable earning site for Singapore. The interface is clean and easy to use. I cashed out via PayPal without any issues."</p>
-                    <p class="font-bold text-gray-800">- Priya K.</p>
-                    <p class="text-sm text-gray-500">Jurong West, Singapore</p>
+                <div class="themed-card p-8 flex items-start space-x-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flex-shrink-0"><svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></div>
+                    <div>
+                        <h4 class="text-2xl mb-2">Refer Friends</h4>
+                        <p class="text-muted">Invite others to the platform and earn a commission from their earnings.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Register Section -->
-    <section id="register" class="py-24 px-6 bg-white">
+    <section id="testimonials" class="py-16 md:py-24 px-4 sm:px-6 themed-section">
         <div class="container mx-auto text-center">
-            <div class="w-24 h-1 section-divider mx-auto mb-16 rounded-full" data-aos="fade-up"></div>
-            <h3 class="text-6xl text-gray-800 mb-12" data-aos="fade-up">Register Your Free Account</h3>
-            <p class="text-xl text-gray-500 mb-8 max-w-2xl mx-auto font-light" data-aos="fade-up">
-                Start your earning journey today. Join the EARN24 SG community now!
-            </p>
-            <form class="max-w-xl mx-auto text-left" data-aos="fade-up" id="registration-form">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <input type="text" name="username" placeholder="Username" class="input-field p-4" required>
-                    <input type="email" name="email" placeholder="Email Address" class="input-field p-4" required>
+            <div class="section-divider mx-auto mb-8" data-aos="fade-up"></div>
+            <h3 class="text-4xl md:text-5xl mb-16" data-aos="fade-up">What Our Members Say</h3>
+            <div id="testimonial-container" class="max-w-3xl mx-auto h-48 relative">
+                <!-- Testimonials will be injected here -->
+            </div>
+        </div>
+    </section>
+    
+    </main>
+
+    <section id="dashboard" class="hidden min-h-screen pt-24 md:pt-32 pb-16 themed-section">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl md:text-5xl mb-12">Member Dashboard</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 themed-card p-6 sm:p-8">
+                    <h3 class="text-3xl md:text-4xl text-accent mb-6">Your Balances</h3>
+                    <div class="space-y-4 text-xl md:text-2xl">
+                        <p><strong>USDT Balance:</strong> $<span id="balance-usdt">0.00</span> USDT</p>
+                        <p><strong>Points Balance:</strong> <span id="points">0</span> Points</p>
+                        <p class="text-muted"><strong>Approx. Local Value:</strong> <span id="balance-local">S$0.00</span></p>
+                    </div>
+                     <hr class="my-8 border-accent/20">
+                     <h3 class="text-3xl md:text-4xl text-accent mb-6">Your Referral Code</h3>
+                     <p class="text-lg text-muted">Share this code to earn 500 points for each new member who joins.</p>
+                     <div class="relative mt-2">
+                        <code id="referral-code" class="code-block text-lg md:text-xl font-bold w-full block"></code>
+                        <button id="copy-button" class="absolute right-2 top-1/2 -translate-y-1/2 text-muted hover:text-accent p-2">
+                           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        </button>
+                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <input type="password" name="password" placeholder="Password" class="input-field p-4" required>
-                    <input type="password" name="confirmPassword" placeholder="Confirm Password" class="input-field p-4" required>
+                <div class="themed-card p-6 sm:p-8">
+                    <h3 class="text-3xl md:text-4xl text-accent mb-6">Redeem Points</h3>
+                    <p class="text-muted mb-4">Convert points to USDT. <br>(1000 Points = 1 USDT)</p>
+                    <form id="redeem-form">
+                        <div id="redeem-message-box" class="message-box p-4 mb-4 rounded-lg text-center font-semibold"></div>
+                        <label for="pointsToRedeem" class="font-bold block mb-2">Points to Redeem</label>
+                        <input type="number" id="pointsToRedeem" placeholder="e.g., 1000" class="input-field p-3 w-full mt-2 mb-4" min="1000" step="100" required>
+                        <button type="submit" class="w-full btn-primary">Redeem Now</button>
+                    </form>
                 </div>
-                <div class="text-center">
-                    <button type="submit" class="btn-primary-accent font-bold py-4 px-12 text-xl uppercase tracking-wider">
-                        Create Account
-                    </button>
-                </div>
-                <div id="message" class="mt-4 text-center"></div>
-            </form>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="text-gray-600 py-10 border-t bg-white">
-        <div class="container mx-auto px-6 text-center">
+    <footer class="py-10" style="background-color: #0D1117">
+        <div class="container mx-auto px-4 sm:px-6 text-center text-gray-400">
             <p class="mb-4">&copy; 2025 EARN24 SG. All Rights Reserved.</p>
-            <div class="flex justify-center space-x-6">
-                <a href="#" class="text-gray-700 hover:text-primary-accent transition-colors duration-300">About Us</a>
-                <a href="#" class="text-gray-700 hover:text-primary-accent transition-colors duration-300">FAQ</a>
-                <a href="#" class="text-gray-700 hover:text-primary-accent transition-colors duration-300">Privacy Policy</a>
-                <a href="#" class="text-gray-700 hover:text-primary-accent transition-colors duration-300">Terms of Use</a>
-            </div>
+            <p>7 Straits View, #15-01 Marina One, Singapore 018936</p>
         </div>
     </footer>
 
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="modal-content rounded-lg p-8 w-full max-w-md transform scale-95 transition-transform duration-300">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-3xl">Member Login</h3>
+                <button id="close-modal-button" class="text-muted hover:text-color text-4xl">&times;</button>
+            </div>
+            <form id="login-form">
+                <div id="login-message-box" class="message-box p-4 mb-4 rounded-lg text-center font-semibold"></div>
+                <div class="mb-6">
+                    <label for="login-email" class="block mb-2 text-muted">Email Address</label>
+                    <input type="email" name="login-email" class="input-field w-full p-3" required>
+                </div>
+                <div class="mb-8">
+                    <label for="login-password" class="block mb-2 text-muted">Password</label>
+                    <input type="password" name="login-password" class="input-field w-full p-3" required>
+                </div>
+                <button type="submit" class="w-full btn-primary">Sign In</button>
+            </form>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            once: true,
-            offset: 50,
+        // --- CONFIG ---
+        const backendUrl = 'https://earn24sg.onrender.com';
+
+        // --- DOM ELEMENTS ---
+        const loginForm = document.getElementById('login-form');
+        const redeemForm = document.getElementById('redeem-form');
+        const opportunitiesGrid = document.getElementById('opportunities-grid');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const testimonialContainer = document.getElementById('testimonial-container');
+        
+        // --- TESTIMONIALS ---
+        const testimonials = [
+            { quote: "I was skeptical, but Earn 24 SG is legit! I made my first S$50 in a week just doing surveys in my free time.", name: "Sarah T.", location: "Clementi, Singapore" },
+            { quote: "The variety of tasks is great, and the payments are always on time. A perfect side hustle for anyone.", name: "David L.", location: "Tampines, Singapore" },
+            { quote: "Finally, a reliable earning site for Singapore. The interface is clean and I cashed out via PayPal without any issues.", name: "Priya K.", location: "Jurong West, Singapore" },
+            { quote: "I love earning a little extra by testing new apps. It's fun and the rewards are a great bonus.", name: "Michael C.", location: "Yishun, Singapore" },
+            { quote: "The cashback offers have saved me a surprising amount on my online shopping. It's a no-brainer!", name: "Aisha R.", location: "Bedok, Singapore" },
+            { quote: "As a student, this platform is perfect for earning some pocket money between classes. Super flexible.", name: "James P.", location: "Queenstown, Singapore" },
+            { quote: "The referral system is fantastic. I invited a few friends and my points balance grew much faster.", name: "Fatimah A.", location: "Woodlands, Singapore" },
+            { quote: "Watching videos to earn rewards is the easiest money I've ever made. I do it while commuting.", name: "Wei S.", location: "Ang Mo Kio, Singapore" },
+            { quote: "Playing games and actually getting rewarded for it? Sign me up! It's been a great experience.", name: "Isabelle G.", location: "Punggol, Singapore" },
+            { quote: "The platform is professional and transparent. You always know how much you've earned and how to redeem it.", name: "Daniel K.", location: "Sengkang, Singapore" },
+            { quote: "I appreciate the quick customer support. Had a small issue and they resolved it within a day.", name: "Chloe M.", location: "Bukit Merah, Singapore" },
+        ];
+        let currentTestimonialIndex = -1;
+
+        // --- EVENT LISTENERS ---
+        document.addEventListener('DOMContentLoaded', initializeApp);
+        if(loginForm) loginForm.addEventListener('submit', handleLogin);
+        if(redeemForm) redeemForm.addEventListener('submit', handleRedemption);
+        
+        // --- Mobile & Desktop Button Listeners ---
+        document.querySelectorAll('#login-button, #login-button-mobile').forEach(btn => btn.addEventListener('click', openLoginModal));
+        document.querySelectorAll('#logout-button-desktop, #logout-button-mobile').forEach(btn => btn.addEventListener('click', handleLogout));
+        document.querySelectorAll('#dashboard-button-desktop, #dashboard-button-mobile').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.getElementById('dashboard').scrollIntoView({ behavior: 'smooth' });
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        document.getElementById('close-modal-button')?.addEventListener('click', closeLoginModal);
+        document.getElementById('login-modal')?.addEventListener('click', (e) => e.target.id === 'login-modal' && closeLoginModal());
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
-        const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        // --- INITIALIZATION ---
+        function initializeApp() {
+            AOS.init({ once: true, duration: 800, offset: 50 });
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.body.dataset.theme = savedTheme;
+            updateUI();
+            fetchOpportunities();
+            startTestimonialRotation();
+        }
 
-        // Handle form submission
-        document.getElementById('registration-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
+        function startTestimonialRotation() {
+            if (!testimonialContainer) return;
+            showRandomTestimonial();
+            setInterval(showRandomTestimonial, 6000); // Rotate every 6 seconds
+        }
+
+        function showRandomTestimonial() {
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * testimonials.length);
+            } while (randomIndex === currentTestimonialIndex);
             
-            const formData = new FormData(e.target);
-            const data = {
-                username: formData.get('username'),
-                email: formData.get('email'),
-                password: formData.get('password'),
-                confirmPassword: formData.get('confirmPassword')
-            };
-
-            const messageDiv = document.getElementById('message');
-
-            // Check if passwords match
-            if (data.password !== data.confirmPassword) {
-                messageDiv.innerHTML = '<p class="text-red-600">Passwords do not match!</p>';
-                return;
+            currentTestimonialIndex = randomIndex;
+            const testimonial = testimonials[currentTestimonialIndex];
+            
+            const existingItem = testimonialContainer.querySelector('.testimonial-item');
+            
+            if (existingItem) {
+                existingItem.classList.remove('fade-in');
+                existingItem.classList.add('fade-out');
+                setTimeout(() => {
+                    testimonialContainer.innerHTML = createTestimonialHTML(testimonial);
+                }, 500); // Wait for fade-out animation to finish
+            } else {
+                testimonialContainer.innerHTML = createTestimonialHTML(testimonial);
             }
+        }
+        
+        function createTestimonialHTML(testimonial) {
+            return `
+                <div class="testimonial-item fade-in">
+                    <p class="text-2xl italic text-muted">"${testimonial.quote}"</p>
+                    <p class="mt-4 text-xl font-bold text-color">- ${testimonial.name}</p>
+                    <p class="text-md text-muted">${testimonial.location}</p>
+                </div>
+            `;
+        }
 
+
+        async function fetchOpportunities() {
+            if (!opportunitiesGrid) return;
             try {
-                const response = await fetch('http://localhost:3001/api/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        username: data.username,
-                        email: data.email,
-                        password: data.password
-                    })
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    messageDiv.innerHTML = '<p class="text-green-600 font-bold">' + result.message + '</p>';
-                    e.target.reset();
+                const data = await apiCall('/api/opportunities', 'GET');
+                const opportunities = data ? data.opportunities : [];
+                opportunitiesGrid.innerHTML = ''; // Clear loading placeholders
+                if (opportunities && opportunities.length > 0) {
+                    opportunities.forEach(opp => {
+                        const card = document.createElement('div');
+                        card.className = 'themed-card p-8';
+                        card.innerHTML = `
+                            <h4 class="text-2xl text-accent mb-3">${opp.title}</h4>
+                            <p class="text-muted">${opp.description}</p>
+                            <p class="text-accent font-bold mt-4">${opp.reward} Points</p>
+                        `;
+                        opportunitiesGrid.appendChild(card);
+                    });
                 } else {
-                    messageDiv.innerHTML = '<p class="text-red-600">' + result.message + '</p>';
+                     renderFallbackOpportunities();
                 }
             } catch (error) {
-                messageDiv.innerHTML = '<p class="text-red-600">Error connecting to server. Please try again later.</p>';
-                console.error('Error:', error);
+                renderFallbackOpportunities();
             }
-        });
+        }
+        
+        function renderFallbackOpportunities() {
+             if (!opportunitiesGrid) return;
+            opportunitiesGrid.innerHTML = `
+                <div class="themed-card p-8" data-aos="fade-up">
+                    <h4 class="text-2xl text-accent mb-3">Market Insights Survey</h4>
+                    <p class="text-muted">Share your opinion on new tech products and services.</p>
+                    <p class="text-accent font-bold mt-4">1200 Points</p>
+                </div>
+                <div class="themed-card p-8" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="text-2xl text-accent mb-3">App Usability Testing</h4>
+                    <p class="text-muted">Provide feedback on a new mobile banking application.</p>
+                    <p class="text-accent font-bold mt-4">2500 Points</p>
+                </div>
+                <div class="themed-card p-8" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="text-2xl text-accent mb-3">Media Content Review</h4>
+                    <p class="text-muted">Watch and rate upcoming video content for a streaming service.</p>
+                    <p class="text-accent font-bold mt-4">800 Points</p>
+                </div>
+            `;
+        }
+
+        // --- UI & STATE MANAGEMENT ---
+        function updateUI() {
+            const token = localStorage.getItem('authToken');
+            const loggedOutViews = document.querySelectorAll('.logged-out-view');
+            const loggedInViews = document.querySelectorAll('.logged-in-view');
+            const mainContent = document.getElementById('main-content');
+            const dashboardView = document.getElementById('dashboard');
+
+            if (token) {
+                loggedOutViews.forEach(el => el.style.display = 'none');
+                loggedInViews.forEach(el => el.style.display = 'flex');
+                if(mainContent) mainContent.style.display = 'none';
+                if(dashboardView) dashboardView.style.display = 'block';
+                fetchDashboardData();
+            } else {
+                loggedOutViews.forEach(el => el.style.display = 'flex');
+                loggedInViews.forEach(el => el.style.display = 'none');
+                if(mainContent) mainContent.style.display = 'block';
+                if(dashboardView) dashboardView.style.display = 'none';
+            }
+        }
+
+        async function fetchDashboardData() {
+            try {
+                const { user, balanceLocal } = await apiCall('/api/user/me', 'GET', null, true);
+                document.querySelectorAll('#nav-username-desktop, #nav-username-mobile').forEach(el => { if(el) el.textContent = user.username });
+                if(document.getElementById('balance-usdt')) document.getElementById('balance-usdt').textContent = user.balanceUSDT.toFixed(2);
+                if(document.getElementById('points')) document.getElementById('points').textContent = user.points;
+                if(document.getElementById('balance-local')) document.getElementById('balance-local').textContent = `${balanceLocal.currency} ${balanceLocal.amount}`;
+                if(document.getElementById('referral-code')) document.getElementById('referral-code').textContent = user.referralCode;
+                
+                document.getElementById('copy-button')?.addEventListener('click', () => {
+                    const codeToCopy = document.getElementById('referral-code').textContent;
+                    const el = document.createElement('textarea');
+                    el.value = codeToCopy;
+                    document.body.appendChild(el);
+                    el.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(el);
+                    showMessage('redeem-message-box', 'Referral code copied!', 'success');
+                });
+
+            } catch (error) {
+                showMessage('login-message-box', 'Session expired. Please log in again.', 'error');
+                handleLogout();
+            }
+        }
+        
+        // --- API HANDLERS ---
+        async function handleLogin(e) {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(e.target).entries());
+            try {
+                const response = await apiCall('/api/auth/login', 'POST', { email: data['login-email'], password: data['login-password'] });
+                localStorage.setItem('authToken', response.token);
+                closeLoginModal();
+                updateUI();
+            } catch (error) {
+                showMessage('login-message-box', error.message, 'error');
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('authToken');
+            window.location.reload();
+        }
+        
+        async function handleRedemption(e) {
+            e.preventDefault();
+            const pointsToRedeem = document.getElementById('pointsToRedeem').value;
+             try {
+                const response = await apiCall('/api/rewards/redeem', 'POST', { pointsToRedeem: Number(pointsToRedeem) }, true);
+                showMessage('redeem-message-box', response.message, 'success');
+                fetchDashboardData();
+                e.target.reset();
+            } catch (error) {
+                showMessage('redeem-message-box', error.message, 'error');
+            }
+        }
+
+        // --- GENERIC API CALL FUNCTION ---
+        async function apiCall(endpoint, method, body, requiresAuth = false) {
+            const options = { method, headers: { 'Content-Type': 'application/json' }};
+            if (body) options.body = JSON.stringify(body);
+            if (requiresAuth) {
+                const token = localStorage.getItem('authToken');
+                if (!token) throw new Error('Authentication required.');
+                options.headers['Authorization'] = `Bearer ${token}`;
+            }
+            
+            try {
+                const response = await fetch(backendUrl + endpoint, options);
+                
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    const data = await response.json();
+                    if (!response.ok) throw new Error(data.message || 'An API error occurred.');
+                    return data;
+                } else {
+                    if (!response.ok) {
+                        throw new Error(`Server responded with status ${response.status}. Expected JSON but received HTML/Text.`);
+                    }
+                    if (response.status === 204) {
+                        return null; 
+                    }
+                    throw new Error('Server returned an unexpected non-JSON response.');
+                }
+            } catch (networkError) {
+                // Silently fail for opportunities fetch
+                if(endpoint === '/api/opportunities') {
+                    throw networkError;
+                }
+                console.error('Network or fetch error:', networkError);
+                throw new Error('Could not connect to the server. Please check your connection.');
+            }
+        }
+
+        // --- UTILITY & UI HELPERS ---
+        function showMessage(boxId, message, type) {
+            const box = document.getElementById(boxId);
+            if (!box) return;
+            box.textContent = message;
+            box.className = 'message-box p-4 mb-4 rounded-lg text-center font-semibold';
+            box.classList.add(type);
+        }
+
+        function openLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('.modal-content').classList.remove('scale-95');
+            mobileMenu.classList.add('hidden');
+        }
+
+        function closeLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.querySelector('.modal-content').classList.add('scale-95');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('pointer-events-none'), 300);
+        }
     </script>
 </body>
 </html>
+
+
