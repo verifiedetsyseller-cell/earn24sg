@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+HEAD
 // server.js - Backend for EARN24 SG (Version 5 - With Admin Panel & Full Features)
 
 // --- 1. Import Dependencies ---
@@ -503,6 +503,6 @@ app.get("/api/currency/:to", async (req, res) => {
 app.listen(process.env.PORT || 3001, async () => {
   await createDevAdmin();
   console.log(`🚀 Server running on port ${process.env.PORT || 3001}`);
->>>>>>> a7df8022d3beab94bb33cb86edf5d5dbf4e0ea71
+a7df8022d3beab94bb33cb86edf5d5dbf4e0ea71
 });
 
