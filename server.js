@@ -9,10 +9,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const axios = require('axios');
 const { nanoid } = require('nanoid');
-=======
-// =======================================================
-// EARN24 SG - Backend Server (Render + MongoDB + InfinityFree Frontend)
-// =======================================================
+
 
 require("dotenv").config();
 const express = require("express");
@@ -25,11 +22,11 @@ const rateLimit = require("express-rate-limit");
 const mongoSanitize = require("express-mongo-sanitize");
 const axios = require("axios");
 const { v4: uuidv4 } = require("uuid");
->>>>>>> a7df8022d3beab94bb33cb86edf5d5dbf4e0ea71
+a7df8022d3beab94bb33cb86edf5d5dbf4e0ea71
 
 const app = express();
 
-<<<<<<< HEAD
+ HEAD
 // --- 3. Middleware ---
 app.use(cors());
 app.use(express.json());
