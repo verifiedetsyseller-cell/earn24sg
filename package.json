@@ -28,11 +28,7 @@
     "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.0",
-<<<<<<< HEAD
-    "xss-clean": "^0.1.4"
-=======
     "xss-clean": "^0.1.4",
->>>>>>> e7b80de (Fixed package.json and installed dependencies)
     "nanoid": "^5.0.7"
   },
   "devDependencies": {
